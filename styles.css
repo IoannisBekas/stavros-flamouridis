@@ -35,8 +35,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var
 .eyebrow{font-size:10px;font-weight:650;letter-spacing:1.8px;line-height:1.7;margin:0 0 20px}
 .hero-location{font-size:9px;letter-spacing:1.6px;margin-bottom:22px}
 h1,h2,h3,p{overflow-wrap:break-word}
-h1{font-size:clamp(46px,4.6vw,68px);font-weight:800;line-height:1.04;letter-spacing:-3px;margin:0 0 23px}
-h1 em{font-style:normal;font-weight:450;font-size:.82em;letter-spacing:-2px}
+h1{font-size:clamp(40px,3.7vw,54px);font-weight:800;line-height:1.12;letter-spacing:-2px;margin:0 0 23px}
+h1 em{font-style:normal;font-weight:450;font-size:1em;letter-spacing:inherit}
 .hero-intro{max-width:505px;font-size:14px;line-height:1.85;margin:0 0 26px}
 .hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:25px}
 .button{display:inline-flex;align-items:center;justify-content:center;gap:25px;min-height:52px;padding:15px 23px;border:0;border-radius:40px;background:var(--forest);color:white;font-size:12px;font-weight:650;line-height:1.6;cursor:pointer;transition:background .2s,transform .2s}
@@ -176,7 +176,7 @@ details[open]>summary>span{transform:rotate(45deg)}
   .hero-inner{grid-template-columns:42% 58%;min-height:520px}
   .hero-portrait>img{height:560px}
   .hero-copy{padding-left:27px}
-  h1{font-size:55px;letter-spacing:-2.5px}
+  h1{font-size:45px;letter-spacing:-1.7px}
   .hero-intro{font-size:13px}
   .hero:before{left:6%;width:130px}
   .intro-grid{column-gap:18px}
@@ -196,7 +196,7 @@ details[open]>summary>span{transform:rotate(45deg)}
   .hero-inner{min-height:480px;grid-template-columns:40% 60%}
   .hero-portrait>img{height:510px}
   .hero-copy{padding-left:25px}
-  h1{font-size:46px;letter-spacing:-2px}
+  h1{font-size:38px;letter-spacing:-1.4px}
   .hero-actions{gap:15px}
   .button{font-size:11px;gap:18px;padding:14px 20px}
   .portrait-label{left:-5px;font-size:10px;padding:13px}
@@ -243,7 +243,7 @@ details[open]>summary>span{transform:rotate(45deg)}
   .hero-copy{background:var(--sage);padding:24px 25px 36px;align-self:stretch;z-index:1}
   .hero-location{font-size:8px;margin-bottom:16px}
   h1{font-size:clamp(37px,9.5vw,55px);letter-spacing:-1.8px;line-height:1.08;margin-bottom:20px}
-  h1 em{letter-spacing:-1.2px;font-size:.9em}
+  h1 em{letter-spacing:inherit;font-size:1em}
   .hero-intro{font-size:13px;line-height:1.85;margin-bottom:24px}
   .hero-actions{gap:17px}
   .button{min-height:50px;font-size:11px;padding:14px 20px;gap:18px}
