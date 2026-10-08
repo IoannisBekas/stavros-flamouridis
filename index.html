@@ -12,6 +12,69 @@
   <link rel="canonical" href="https://stavrosflamouridis.gr/">
   <title>Σταύρος Φλαμουρίδης · Ψυχολόγος MSc</title>
   <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <style>
+    html.page-loading{overflow:hidden}
+    .page-loader{display:none;position:fixed;inset:0;z-index:200;background:#fff;color:#334b40;place-items:center;font-family:Manrope,system-ui,sans-serif}
+    .page-loading .page-loader,.page-ready .page-loader{display:grid}
+    .page-loading body> :not(.page-loader){visibility:hidden}
+    .page-loader-content{text-align:center;padding:24px}
+    .page-loader-mark{display:grid;place-items:center;width:100px;height:100px;margin:0 auto 24px;background:#f4eee5;border-radius:30px}
+    .page-loader-mark svg{display:block;width:60px;height:60px}
+    .page-loader-pulse{transform-box:fill-box;transform-origin:center;animation:loader-breathe 1.6s ease-in-out infinite}
+    .page-loader-name{font-size:18px;font-weight:650;line-height:1.6;margin:0 0 8px}
+    .page-loader-label{font-size:12px;line-height:1.6;color:#59665e;margin:0}
+    .page-loader-line{display:block;position:relative;overflow:hidden;width:96px;height:2px;margin:24px auto 0;background:#e5d7c6;border-radius:2px}
+    .page-loader-line:after{content:'';position:absolute;inset:0 auto 0 0;width:40px;background:#334b40;animation:loader-progress 1.6s ease-in-out infinite}
+    .page-ready .page-loader{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .32s ease,visibility 0s .32s}
+    @keyframes loader-breathe{50%{transform:scale(.88);opacity:.65}}
+    @keyframes loader-progress{from{transform:translateX(-40px)}to{transform:translateX(96px)}}
+    @media(prefers-reduced-motion:reduce){.page-loader-pulse,.page-loader-line:after{animation:none}.page-loader-line:after{left:28px}.page-ready .page-loader{transition:none}}
+  </style>
+  <script>
+    (() => {
+      const root = document.documentElement;
+      root.classList.add('page-loading');
+      let finished = false;
+      const fallback = window.setTimeout(finishLoading, 6000);
+
+      function finishLoading() {
+        if (finished) return;
+        finished = true;
+        window.clearTimeout(fallback);
+        root.classList.replace('page-loading', 'page-ready');
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.setTimeout(() => {
+          document.getElementById('page-loader')?.remove();
+          root.classList.remove('page-ready');
+        }, reducedMotion ? 0 : 350);
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        if (finished) {
+          document.getElementById('page-loader')?.remove();
+          return;
+        }
+        const portrait = document.querySelector('.hero-portrait > img');
+        const portraitReady = !portrait ? Promise.resolve() : new Promise(resolve => {
+          const decodePortrait = () => {
+            if (typeof portrait.decode === 'function') portrait.decode().catch(() => {}).then(resolve);
+            else resolve();
+          };
+          if (portrait.complete) decodePortrait();
+          else {
+            portrait.addEventListener('load', decodePortrait, { once: true });
+            portrait.addEventListener('error', resolve, { once: true });
+          }
+        });
+        Promise.allSettled([document.fonts?.ready, portraitReady]).then(() => {
+          window.requestAnimationFrame(() => window.requestAnimationFrame(finishLoading));
+        });
+      }, { once: true });
+      window.addEventListener('pageshow', event => {
+        if (event.persisted) finishLoading();
+      });
+    })();
+  </script>
   <link rel="preload" href="assets/fonts/manrope-greek-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/manrope-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/fonts/manrope.css">
@@ -21,6 +84,16 @@
   <script src="contact.js" defer></script>
 </head>
 <body>
+  <div id="page-loader" class="page-loader" role="status" aria-live="polite" aria-atomic="true">
+    <div class="page-loader-content">
+      <div class="page-loader-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48"><circle class="page-loader-pulse" cx="18" cy="16" r="12" fill="#a6b49f"/><circle cx="35" cy="6" r="4" fill="#c77d61"/><circle cx="18" cy="37" r="8" fill="none" stroke="#334b40" stroke-width="5"/></svg>
+      </div>
+      <p class="page-loader-name">Σταύρος Φλαμουρίδης</p>
+      <p class="page-loader-label">Φόρτωση σελίδας…</p>
+      <span class="page-loader-line" aria-hidden="true"></span>
+    </div>
+  </div>
   <a class="skip-link" href="#main">Μετάβαση στο περιεχόμενο</a>
   <header class="site-header">
     <div class="header-inner container">
