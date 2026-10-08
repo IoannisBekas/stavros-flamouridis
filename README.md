@@ -2,7 +2,7 @@
 
 Greek-language professional website with a sage hero, transparent portrait, rounded service cards, expandable qualifications and an appointment request form.
 
-**Live website:** https://ioannisbekas.github.io/stavros-flamouridis/
+**Live website:** https://stavrosflamouridis.gr/
 
 ## Development
 
