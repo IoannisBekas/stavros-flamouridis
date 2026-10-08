@@ -23,6 +23,31 @@ document.addEventListener('keydown', event => {
   }
 });
 
+const qualificationHover = window.matchMedia('(any-hover: hover) and (any-pointer: fine)');
+document.querySelectorAll('.qualifications details').forEach(details => {
+  let mouseHovered = false;
+  details.addEventListener('pointerenter', event => {
+    if (event.pointerType !== 'mouse' || !qualificationHover.matches) return;
+    mouseHovered = true;
+    details.open = true;
+  });
+  function endMouseHover(event) {
+    if (event.pointerType !== 'mouse') return;
+    mouseHovered = false;
+    if (!details.querySelector(':focus-visible')) details.open = false;
+  }
+  details.addEventListener('pointerleave', endMouseHover);
+  details.addEventListener('pointercancel', endMouseHover);
+  details.querySelector('summary').addEventListener('click', event => {
+    if (mouseHovered && event.detail > 0 && event.pointerType !== 'touch') {
+      event.preventDefault();
+    }
+  });
+  details.addEventListener('focusout', event => {
+    if (!details.contains(event.relatedTarget) && !mouseHovered) details.open = false;
+  });
+});
+
 if ('IntersectionObserver' in window) {
   const revealObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
