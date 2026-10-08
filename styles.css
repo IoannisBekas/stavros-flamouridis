@@ -96,6 +96,8 @@ summary{display:flex;justify-content:space-between;align-items:center;gap:20px;c
 summary::-webkit-details-marker{display:none}
 summary>span{font-size:22px;font-weight:400;flex:none;transition:transform .2s}
 details[open]>summary>span{transform:rotate(45deg)}
+.qualifications summary>span{transition:transform .4s cubic-bezier(.4,0,.2,1)}
+.qualifications details.is-collapsing>summary>span{transform:rotate(0)}
 .details-content{padding:0 0 25px;font-size:12px;line-height:1.9;color:var(--muted)}
 .details-content p{margin:0 0 15px}
 .details-content p:last-child{margin-bottom:0}
